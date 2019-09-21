@@ -21,10 +21,17 @@
                 <!-- Navbar Right Side -->
                 <div class="navbar-nav">
                     <ul class="nav navbar-nav">
-                        <li> <a class="nav-item nav-link" style="color: #cbd5db; font-weight: 500;"
-                                href="{{ url_for('login') }}">Login</a></li>
-                        <li><a class="nav-item nav-link" style="color: #cbd5db; font-weight: 500;"
-                                href="{{ url_for('register') }}">Register</a></li>
+                        {% if current_user.is_authenticated %}
+                            <li> <a class="nav-item nav-link" style="color: #cbd5db; font-weight: 500;"
+                                href="{{ url_for('account') }}">Account</a></li>
+                            <li> <a class="nav-item nav-link" style="color: #cbd5db; font-weight: 500;"
+                                href="{{ url_for('logout') }}">Logout</a></li>
+                        {% else %}
+                            <li> <a class="nav-item nav-link" style="color: #cbd5db; font-weight: 500;"
+                                    href="{{ url_for('login') }}">Login</a></li>
+                            <li><a class="nav-item nav-link" style="color: #cbd5db; font-weight: 500;"
+                                    href="{{ url_for('register') }}">Register</a></li>
+                        {% endif %}
                     </ul>
                 </div>
             </div>
